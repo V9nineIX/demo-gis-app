@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>GIS App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.css">
+  <link href="css/ol.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/ol3-layerswitcher.css" />
+  <link rel="stylesheet" href='css/font-awesome/css/font-awesome.css' >
+  <style>
+    .ol-dragbox {
+      background-color: rgba(255, 255, 255, 0.4);
+      border-color: rgba(100, 150, 0, 1);
+    }
+
+    #coordinates {
+      float: left;
+    }
+
+    .layertree {
+      width: 25%;
+      height: calc(100% - 3.5em);
+      float: left;
+      padding: 10px;
+    }
+
+    .info-section div {
+      text-align: right;
+    }
+
+    .tooltip {
+        position: relative;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        color: white;
+        padding: 4px 8px;
+        opacity: 0.7;
+        white-space: nowrap;
+      }
+      .tooltip-measure {
+        opacity: 1;
+        font-weight: bold;
+      }
+      .tooltip-static {
+        background-color: #ffcc33;
+        color: black;
+        border: 1px solid white;
+      }
+      .tooltip-measure:before,
+      .tooltip-static:before {
+        border-top: 6px solid rgba(0, 0, 0, 0.5);
+        border-right: 6px solid transparent;
+        border-left: 6px solid transparent;
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        margin-left: -7px;
+        left: 50%;
+      }
+      .tooltip-static:before {
+        border-top-color: #ffcc33;
+      }  
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+
+
+</head>
+
+<body>
+  <div id="layertree" class="layertree">
+    <button class="btn btn-primary" id="draw_btn">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      วาด</button>
+
+
+    <button class="btn btn-success" id="save_btn">
+        <i class="fa fa-save" aria-hidden="true"></i>
+      บันทึก</button>
+
+    <button class="btn btn-warning" id="delete_btn">
+        <i class="fa fa-eraser" aria-hidden="true"></i>
+      ลบ</button>
+
+    <button class="btn btn-danger" id="clear_btn">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      ลบทั้งหมด</button>
+
+
+    <div>
+      <br/>
+
+      <div class="form-group info-section">
+
+        <span id="area"></span>
+
+      </div>
+
+      <div id="form">
+        <div class="form-group">
+          <label for="name">ชื่อแปลง</label>
+          <input type="text" class="form-control" id="map_name">
+        </div>
+
+
+        <div class="form-group">
+          <label for="desc">รายละเอียด</label>
+          <textarea class="form-control" id="map_desc" rows="3"></textarea>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>
+  <div id="map" style=" float:left; width: 75%; height:750px"></div>
+  </div>
+
+
+
+
+  <script type="text/javascript" src="js/ol-debug.js"></script>
+  <!-- <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.0.1/ol.js"></script> -->
+  <script type="text/javascript" src="js/ol3-layerswitcher.js"></script>
+  <script type="text/javascript" src="js/notify.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+</body>
+
+
+</html>
